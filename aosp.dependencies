@@ -1,11 +1,5 @@
 [
   {
-    "repository"  : "danisapyl/kernel_lge_bullhead",
-    "target_path" : "kernel/lge/bullhead",
-    "branch"      : "stable",
-    "remote"      : "github"
-  },
-  {
     "repository"  : "lakgarg/packages_apps_GoogleCamera",
     "target_path" : "packages/apps/GoogleCamera",
     "branch"      : "master",
