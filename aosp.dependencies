@@ -1,5 +1,23 @@
 [
   {
+    "repository"  : "PACROM/device_lge_bullhead",
+    "target_path" : "device/lge/bullhead",
+    "branch"      : "ten",
+    "remote"      : "github"
+  },
+  {
+    "repository"  : "PACROM/kernel_lge_bullhead",
+    "target_path" : "kernel/lge/bullhead",
+    "branch"      : "ten",
+    "remote"      : "github"
+  },
+  {
+    "repository"  : "PACROM/proprietary_vendor_lge",
+    "target_path" : "vendor/lge",
+    "branch"      : "10",
+    "remote"      : "github"
+  },
+  {
     "repository"  : "lakgarg/packages_apps_GoogleCamera",
     "target_path" : "packages/apps/GoogleCamera",
     "branch"      : "master",
