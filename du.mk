@@ -1,5 +1,5 @@
 #
-# Copyright 2013-2017 The Dirty Unicorns Project
+# Copyright 2015 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,10 +12,15 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-# Sample: This is where we'd set a backup provider if we had one
-# $(call inherit-product, device/sample/products/backup_overlay.mk)
+#
+# This file is the build configuration for an aosp Android
+# build for marlin hardware. This cleanly combines a set of
+# device-specific aspects (drivers) with a device-agnostic
+# product configuration (apps). Except for a few implementation
+# details, it only fundamentally contains two inherit-product
+# lines, aosp and du, hence its name.
+#
 
 # Inherit device configuration
 $(call inherit-product, device/lge/bullhead/aosp_bullhead.mk)
@@ -29,3 +34,24 @@ PRODUCT_BRAND := google
 PRODUCT_MODEL := Nexus 5X
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_RESTRICT_VENDOR_FILES := false
+
+#PRODUCT_COPY_FILES += device/lge/bullhead/fstab.aosp_bullhead:root/fstab.bullhead
+
+$(call inherit-product, device/lge/bullhead/device.mk)
+
+# Device Fingerprint
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRIVATE_BUILD_DESC="bullhead-user 8.1.0 OPM3.171019.014 4503998 release-keys"
+
+BUILD_FINGERPRINT=google/bullhead/bullhead:8.1.0/OPM3.171019.014/4503998:user/release-keys 
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.build.fingerprint=google/bullhead/bullhead:8.1.0/OPM3.171019.014/4503998:user/release-keys
+
+PRODUCT_PACKAGES += \
+    Launcher3 \
+    WallpaperPicker
+
+$(call inherit-product-if-exists, vendor/lge/bullhead/bullhead-vendor.mk)
+$(call inherit-product-if-exists, vendor/pixelgapps/pixel-gapps.mk)
+
